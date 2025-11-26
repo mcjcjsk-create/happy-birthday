@@ -6,47 +6,60 @@
   <title>Photo Popup with Password</title>
 
   <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      font-family: "Poppins", Arial, sans-serif;
+      overflow: hidden;
+    }
+
     body {
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: "Poppins", Arial, sans-serif;
       text-align: center;
-      padding: 40px;
       color: #333;
       animation: fadeIn 1s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
     }
 
     h1 {
       color: white;
-      font-size: 40px;
+      font-size: 5vw; /* ขนาดปรับตามหน้าจอ */
       text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-      margin-bottom: 30px;
+      margin-bottom: 2vh;
       font-weight: 600;
     }
 
     .photo {
-      display: inline-block;
+      width: 90vw;  /* ขนาดเต็มหน้าจอเกือบเต็ม */
+      max-width: 600px; 
+      height: 60vh;
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .photo img {
-      width: 600px;
-      height: 450px;
+      width: 100%;
+      height: 100%;
       border-radius: 20px;
       object-fit: cover;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
     .photo:hover {
-      transform: scale(1.05);
+      transform: scale(1.03);
     }
 
     .message-popup {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       background: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(5px);
       display: flex;
@@ -65,34 +78,36 @@
 
     .message-box {
       background: rgba(255, 255, 255, 0.2);
-      padding: 35px 40px;
+      padding: 8vw; /* ปรับตามหน้าจอมือถือ */
       border-radius: 20px;
       backdrop-filter: blur(10px);
       text-align: center;
       color: white;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
       animation: popupShow 0.35s ease;
+      max-width: 90vw;
     }
 
     .message-box h2 {
-      font-size: 26px;
-      margin-bottom: 15px;
+      font-size: 5vw;
+      margin-bottom: 4vw;
       font-weight: 600;
     }
 
     .password-input input {
-      padding: 12px 15px;
-      font-size: 16px;
+      padding: 3vw;
+      font-size: 4vw;
       border-radius: 10px;
       border: none;
-      width: 200px;
+      width: 50%;
+      max-width: 200px;
       outline: none;
-      margin-right: 10px;
+      margin-right: 3vw;
     }
 
     .password-input button {
-      padding: 12px 22px;
-      font-size: 16px;
+      padding: 3vw;
+      font-size: 4vw;
       border-radius: 10px;
       background-color: #ff6b81;
       color: white;
@@ -160,29 +175,28 @@
   <script src="https://www.youtube.com/iframe_api"></script>
 
   <script>
-  var videoId = "lqWP-nJF0kA";
+    var videoId = "lqWP-nJF0kA";
 
-  function onYouTubeIframeAPIReady() {
-    new YT.Player('player', {
-      videoId: videoId,
-      playerVars: {
-        autoplay: 1,
-        controls: 0,
-        mute: 0,
-        loop: 1,
-        playlist: videoId
-      },
-      events: {
-        onReady: function (event) {
-          event.target.unMute();
-          event.target.setVolume(100);
-          event.target.playVideo();
+    function onYouTubeIframeAPIReady() {
+      new YT.Player('player', {
+        videoId: videoId,
+        playerVars: {
+          autoplay: 1,
+          controls: 0,
+          mute: 0,
+          loop: 1,
+          playlist: videoId
+        },
+        events: {
+          onReady: function (event) {
+            event.target.unMute();
+            event.target.setVolume(100);
+            event.target.playVideo();
+          }
         }
-      }
-    });
-  }
-</script>
-
+      });
+    }
+  </script>
 
 </body>
 </html>
